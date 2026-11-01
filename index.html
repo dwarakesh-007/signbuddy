@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignBuddy – live ASL signing for online meetings</title>
+  <meta name="description" content="SignBuddy is a Chrome extension: a 3D character that signs meeting speech in American Sign Language, with live captions. Try the live demo.">
+  <meta property="og:title" content="SignBuddy – live ASL signing for online meetings">
+  <meta property="og:description" content="A 3D character that turns meeting speech into ASL, in real time. Try it in your browser.">
+  <meta property="og:image" content="assets/alphabet.png">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"> SignBuddy</a>
+      <nav>
+        <a href="#demo">Demo</a>
+        <a href="#how">How it works</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/dwarakesh-007/signbuddy">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-text">
+        <p class="eyebrow">Chrome extension · Free · Open source</p>
+        <h1>Meetings, signed in ASL — live.</h1>
+        <p class="lead">SignBuddy puts a small 3D character in the corner of Google Meet, Zoom, Teams or YouTube.
+          It listens to what people say and signs it in American Sign Language, with captions underneath.</p>
+        <div class="cta">
+          <a class="btn primary" href="#demo">Try the live demo</a>
+          <a class="btn" href="signbuddy-extension.zip" download>Download for Chrome</a>
+        </div>
+        <p class="small">Made for Deaf and hard-of-hearing people who prefer sign language to reading captions.</p>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/demo.gif" alt="The SignBuddy 3D character signing HELLO, YOUR NAME WHAT, THANK-YOU" width="320" height="391">
+      </figure>
+    </section>
+
+    <section id="demo" class="band">
+      <div class="wrap">
+        <h2>Try it now</h2>
+        <p class="sub">Type a sentence, or press the microphone and speak. No install needed.</p>
+        <div class="demo">
+          <div class="stage">
+            <div class="chip" id="behind" hidden>catching up…</div>
+            <canvas id="c" aria-label="3D signing character"></canvas>
+            <div id="gloss" aria-live="polite"></div>
+          </div>
+          <div class="panel">
+            <label for="text" class="lbl">What should it sign?</label>
+            <textarea id="text" rows="3">Hello! What is your name? Thank you.</textarea>
+            <div class="row">
+              <button class="btn primary" id="go">Sign it</button>
+              <button class="btn" id="mic">🎤 Speak</button>
+              <button class="btn ghost" id="clear">Clear</button>
+              <label class="speed">Speed
+                <select id="speed"><option value="0.6">Slow</option><option value="1" selected>Normal</option><option value="1.6">Fast</option></select>
+              </label>
+            </div>
+            <p class="glossline"><span class="lbl">ASL gloss</span> <code id="out">—</code></p>
+            <p class="small" id="micnote"></p>
+            <div>
+              <p class="lbl">Signs it knows</p>
+              <div class="chips" id="words"></div>
+            </div>
+            <div>
+              <p class="lbl">Alphabet (any other word is fingerspelled)</p>
+              <div class="chips" id="letters"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span class="num">1</span><h3>Listens</h3><p>Captures the meeting tab's audio (not just your mic) and turns speech into text with Chrome's built-in speech recognition.</p></li>
+        <li><span class="num">2</span><h3>Translates</h3><p>Rewrites English into ASL gloss — ASL word order, dropping words like “is” and “the”. <em>“What is your name?”</em> becomes <code>YOUR NAME WHAT</code>.</p></li>
+        <li><span class="num">3</span><h3>Signs</h3><p>The 3D character plays each known sign and fingerspells the rest. Eyebrows rise for yes/no questions, lower for WH-questions, and the head shakes for “not”.</p></li>
+      </ol>
+      <div class="features">
+        <div><h3>Real 3D hands</h3><p>Five fingers with three joints each, so handshapes look like real ASL letters.</p></div>
+        <div><h3>Live captions</h3><p>Shown under the character as a backup. Turn them off any time.</p></div>
+        <div><h3>Stays out of the way</h3><p>Drag it anywhere, choose small / medium / large, or hide it with Alt+Shift+S.</p></div>
+        <div><h3>Keeps up</h3><p>Slow / normal / fast signing, and a “catching up…” notice when speech is faster than signing.</p></div>
+      </div>
+      <figure class="alpha">
+        <img src="assets/alphabet.png" alt="The 3D hand showing the ASL alphabet A to Z" loading="lazy">
+        <figcaption>The ASL alphabet on SignBuddy's 3D hand.</figcaption>
+      </figure>
+    </section>
+
+    <section id="install" class="band">
+      <div class="wrap">
+        <h2>Install in Chrome</h2>
+        <p class="sub">SignBuddy isn't on the Chrome Web Store yet. Until then, install it in developer mode — it takes a minute.</p>
+        <ol class="install">
+          <li><a href="signbuddy-extension.zip" download>Download the zip</a> and unzip it.</li>
+          <li>Open <code>chrome://extensions</code> and turn on <b>Developer mode</b> (top right).</li>
+          <li>Click <b>Load unpacked</b> and choose the unzipped <code>signbuddy</code> folder.</li>
+          <li>Pin the 🤟 icon, open a meeting or a YouTube video, and press <b>Start</b>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="wrap honest">
+      <h2>Honest limitations</h2>
+      <ul>
+        <li>It knows 19 word signs plus A–Z; everything else is fingerspelled, which is slower than speech.</li>
+        <li>The English→ASL step uses simple rules. It is not full ASL grammar.</li>
+        <li>Signs are hand-made poses, not motion capture. Please check with Deaf signers before relying on it.</li>
+        <li>Speech recognition uses Chrome's built-in service, which sends audio to Google. See the <a href="privacy.html">privacy page</a>.</li>
+      </ul>
+    </section>
+
+    <section class="wrap related">
+      <div>
+        <h2>The other direction</h2>
+        <p>SignBuddy turns speech into sign. Its sister project, the <b>ASL Translator</b>, turns sign into speech using hand and face tracking.</p>
+      </div>
+      <a class="btn" href="https://dwarakesh-007.github.io/asl-translator/">Open the ASL Translator →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>Built by <a href="https://github.com/dwarakesh-007">Cheela Dwarakesh</a></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="https://github.com/dwarakesh-007/signbuddy">Source code</a></span>
+    </div>
+  </footer>
+
+  <script src="extension/lib/three.min.js"></script>
+  <script src="extension/content/gloss.js"></script>
+  <script src="extension/content/handshapes.js"></script>
+  <script src="extension/content/signs.js"></script>
+  <script src="extension/content/avatar.js"></script>
+  <script src="extension/content/signs3d.js"></script>
+  <script src="extension/content/avatar3d.js"></script>
+  <script src="extension/stt/stt.js"></script>
+  <script src="extension/stt/webspeech.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

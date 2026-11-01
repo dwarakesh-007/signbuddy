@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignBuddy Playground</title>
+  <style>
+    body { font: 14px/1.5 system-ui, sans-serif; margin: 0; background: #f4f6ff; color: #1b1f3a; }
+    main { max-width: 860px; margin: 0 auto; padding: 24px 16px; display: grid; gap: 20px;
+      grid-template-columns: 340px 1fr; }
+    @media (max-width: 720px) { main { grid-template-columns: 1fr; } }
+    h1 { grid-column: 1 / -1; margin: 0; font-size: 22px; }
+    .stage { background: radial-gradient(circle at 50% 40%, #fff, #e3e8ff); border-radius: 16px;
+      display: flex; flex-direction: column; align-items: center; padding: 10px; }
+    #gloss { min-height: 24px; font-weight: 700; margin-top: 6px; text-align: center; }
+    #gloss .now { background: #4c6ef5; color: #fff; padding: 1px 6px; border-radius: 6px; }
+    #gloss .l { color: #8a91b5; } #gloss .l.cur { color: #fff; }
+    #gloss .next { color: #8a91b5; margin-left: 6px; }
+    .panel { display: grid; gap: 14px; align-content: start; }
+    textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 8px; border-radius: 10px; border: 1px solid #ccd2ee; }
+    button { font: inherit; padding: 6px 12px; border-radius: 8px; border: 1px solid #ccd2ee; background: #fff; cursor: pointer; }
+    button.primary { background: #4c6ef5; color: #fff; border-color: #4c6ef5; font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips button { padding: 4px 9px; font-size: 13px; }
+    code { background: #e6e9f8; padding: 2px 6px; border-radius: 6px; }
+    #out { font-family: ui-monospace, monospace; font-size: 13px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>🤟 SignBuddy playground</h1>
+  <div class="stage">
+    <canvas id="c"></canvas>
+    <div id="gloss"></div>
+  </div>
+  <div class="panel">
+    <div>
+      <textarea id="text" rows="3">Hello! Thank you for joining. What is your name?</textarea>
+      <p>
+        <button class="primary" id="go">Sign it</button>
+        <button id="mic">🎤 Use microphone</button>
+        <button id="clear">Clear</button>
+        Speed:
+        <select id="speed"><option value="0.6">Slow</option><option value="1" selected>Normal</option><option value="1.6">Fast</option></select>
+      </p>
+      <div>Gloss: <span id="out"></span></div>
+      <div id="backlog"></div>
+    </div>
+    <div>
+      <b>Known signs</b>
+      <div class="chips" id="words"></div>
+    </div>
+    <div>
+      <b>Alphabet</b>
+      <div class="chips" id="letters"></div>
+    </div>
+  </div>
+</main>
+<script src="../lib/three.min.js"></script>
+<script src="../content/gloss.js"></script>
+<script src="../content/handshapes.js"></script>
+<script src="../content/signs.js"></script>
+<script src="../content/avatar.js"></script>
+<script src="../content/signs3d.js"></script>
+<script src="../content/avatar3d.js"></script>
+<script src="../stt/stt.js"></script>
+<script src="../stt/webspeech.js"></script>
+<script src="playground.js"></script>
+</body>
+</html>

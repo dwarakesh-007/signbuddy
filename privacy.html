@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignBuddy – Privacy</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="" width="28" height="28"> SignBuddy</a>
+      <nav><a href="./">Home</a></nav>
+    </div>
+  </header>
+  <main class="wrap" style="max-width:760px;padding-top:40px;padding-bottom:56px">
+    <h1 style="font-size:2.2rem">Privacy</h1>
+    <p class="small">Last updated: 1 November 2026</p>
+
+    <h2 style="font-size:1.3rem;margin-top:1.5em">What SignBuddy does with audio</h2>
+    <p>When you press <b>Start</b>, SignBuddy captures the audio of the current tab (or your microphone, if you choose that)
+      so it can turn speech into text and signs. SignBuddy itself does not record, save or upload this audio.</p>
+    <p>To turn speech into text, SignBuddy uses the speech recognition built into Google Chrome (the Web Speech API).
+      Chrome may send that audio to Google's servers to recognise it. That processing is covered by
+      <a href="https://policies.google.com/privacy">Google's privacy policy</a>. If you turn on
+      <b>On-device speech</b> and your Chrome supports it, recognition happens on your computer instead.</p>
+
+    <h2 style="font-size:1.3rem;margin-top:1.5em">What is stored</h2>
+    <p>Only your settings (speed, size, captions on/off, character style) and where you placed the character on the screen.
+      These are saved in Chrome's local extension storage on your computer. Captions and transcripts are not saved.</p>
+
+    <h2 style="font-size:1.3rem;margin-top:1.5em">Optional local AI</h2>
+    <p>If you turn on <b>Better grammar</b>, each sentence is sent to an Ollama model running on your own computer
+      (<code>localhost</code>). It does not leave your computer.</p>
+
+    <h2 style="font-size:1.3rem;margin-top:1.5em">What SignBuddy does not do</h2>
+    <ul>
+      <li>No accounts, no analytics, no ads, no tracking.</li>
+      <li>No data is sold or shared with anyone.</li>
+      <li>It only reads audio while it is switched on, in the tab where you started it.</li>
+    </ul>
+
+    <h2 style="font-size:1.3rem;margin-top:1.5em">Contact</h2>
+    <p>Questions? Open an issue on <a href="https://github.com/dwarakesh-007/signbuddy/issues">GitHub</a>.</p>
+  </main>
+  <footer>
+    <div class="wrap foot"><span>SignBuddy by Cheela Dwarakesh</span><a href="./">Back to home</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "SignBuddy",
+  "version": "1.1.0",
+  "description": "A small character that signs online meeting speech in ASL, with live captions.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "tabCapture",
+    "offscreen",
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:11434/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "SignBuddy",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-overlay": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Show or hide the SignBuddy character"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*",
+        "https://*.zoom.us/*",
+        "https://teams.microsoft.com/*",
+        "https://teams.live.com/*",
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "lib/three.min.js",
+        "content/gloss.js",
+        "content/handshapes.js",
+        "content/signs.js",
+        "content/avatar.js",
+        "content/signs3d.js",
+        "content/avatar3d.js",
+        "stt/stt.js",
+        "stt/webspeech.js",
+        "content/overlay.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

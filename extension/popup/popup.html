@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🤟</div>
+    <div>
+      <h1>SignBuddy</h1>
+      <p class="sub">Live ASL signing for meetings</p>
+    </div>
+  </header>
+
+  <button id="startStop" class="primary">Start</button>
+  <p id="status" class="status">Open a meeting tab, then press Start.</p>
+
+  <section>
+    <label>Listen to</label>
+    <div class="seg" data-key="source">
+      <button data-v="tab">Meeting audio</button>
+      <button data-v="mic">Microphone</button>
+    </div>
+  </section>
+
+  <section>
+    <label>Signing speed</label>
+    <div class="seg" data-key="speed">
+      <button data-v="slow">Slow</button>
+      <button data-v="normal">Normal</button>
+      <button data-v="fast">Fast</button>
+    </div>
+  </section>
+
+  <section>
+    <label>Character</label>
+    <div class="seg" data-key="style">
+      <button data-v="3d">3D</button>
+      <button data-v="2d">Simple 2D (faster)</button>
+    </div>
+  </section>
+
+  <section>
+    <label>Character size</label>
+    <div class="seg" data-key="size">
+      <button data-v="small">Small</button>
+      <button data-v="medium">Medium</button>
+      <button data-v="large">Large</button>
+    </div>
+  </section>
+
+  <section class="row">
+    <label for="captions">Show captions</label>
+    <input type="checkbox" id="captions" class="switch">
+  </section>
+
+  <section class="row">
+    <label for="useLLM">Better grammar (local Ollama)</label>
+    <input type="checkbox" id="useLLM" class="switch">
+  </section>
+  <section id="llmBox" class="indent">
+    <input type="text" id="llmModel" placeholder="llama3.2">
+  </section>
+
+  <section class="row">
+    <label for="onDeviceSpeech">On-device speech (experimental)</label>
+    <input type="checkbox" id="onDeviceSpeech" class="switch">
+  </section>
+
+  <footer>
+    <span><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> shows / hides the character</span>
+    <a href="#" id="playground">Open test playground</a>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
