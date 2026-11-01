@@ -39,14 +39,17 @@ const letters = document.getElementById('letters');
 });
 
 let mic = null;
-document.getElementById('mic').onclick = (e) => {
-  if (mic) { mic.stop(); mic = null; e.target.textContent = '🎤 Use microphone'; return; }
+const MIC_ICON = '<svg style="vertical-align:-3px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>';
+const STOP_ICON = '<svg style="vertical-align:-2px" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
+const micBtn = document.getElementById('mic');
+micBtn.onclick = () => {
+  if (mic) { mic.stop(); mic = null; micBtn.innerHTML = MIC_ICON + ' Use microphone'; return; }
   mic = SB.STT.create('webspeech', {
     onText: (t, final) => { document.getElementById('text').value = t; if (final) sign(t); },
     onError: (code) => alert('Speech error: ' + code)
   });
   mic.start(null);
-  e.target.textContent = '■ Stop microphone';
+  micBtn.innerHTML = STOP_ICON + ' Stop microphone';
 };
 
 setInterval(() => {

@@ -57,6 +57,7 @@ nav a:hover { color: var(--text); }
 .btn.primary:hover { filter: brightness(1.07); }
 .btn.ghost { background: transparent; }
 .btn.on { background: #e03131; border-color: #e03131; color: #fff; }
+.btn .ico { flex: none; }
 
 /* hero */
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 56px; }

@@ -56,12 +56,14 @@
   // Microphone (Chrome / Edge only)
   let mic = null;
   const micBtn = $('mic');
+  const MIC_ICON = '<svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>';
+  const STOP_ICON = '<svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
   if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
     micBtn.disabled = true;
     $('micnote').textContent = 'Speaking needs Chrome or Edge. You can still type.';
   }
   micBtn.onclick = () => {
-    if (mic) { mic.stop(); mic = null; micBtn.textContent = '🎤 Speak'; micBtn.classList.remove('on'); return; }
+    if (mic) { mic.stop(); mic = null; micBtn.innerHTML = MIC_ICON + ' Speak'; micBtn.classList.remove('on'); return; }
     mic = SB.STT.create('webspeech', {
       onText: (t, final) => { $('text').value = t; if (final) sign(t); },
       onError: (code) => {
@@ -70,7 +72,7 @@
       }
     });
     mic.start(null);
-    micBtn.textContent = '■ Stop';
+    micBtn.innerHTML = STOP_ICON + ' Stop';
     micBtn.classList.add('on');
     $('micnote').textContent = 'Listening… speak a sentence.';
   };
